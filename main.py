@@ -39,4 +39,6 @@ while game:
 
 
 
+
+
 sc.exitonclick()
