@@ -12,6 +12,14 @@ sc.setup(600,600)
 sc.bgcolor("black")
 sc.tracer(0)
 
+#setup screen listening
+sc.listen()
+sc.onkey(snake.up, "Up")
+sc.onkey(snake.down, "Down")
+sc.onkey(snake.right, "Right")
+sc.onkey(snake.left, "Left")
+
+
 
 #playing game
 game = True

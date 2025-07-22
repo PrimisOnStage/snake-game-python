@@ -20,3 +20,19 @@ class Snake:
             self.seg_list[i].goto(self.seg_list[i - 1].xcor(), self.seg_list[i - 1].ycor())
 
         self.seg_list[0].forward(20)
+
+    def up(self):
+        if self.seg_list[0].heading() != 270:
+            self.seg_list[0].setheading(90)
+
+    def down(self):
+        if self.seg_list[0].heading() != 90:
+            self.seg_list[0].setheading(270)
+
+    def right(self):
+        if self.seg_list[0].heading() != 180:
+            self.seg_list[0].setheading(0)
+
+    def left(self):
+        if self.seg_list[0].heading() != 0:
+            self.seg_list[0].setheading(180)
