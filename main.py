@@ -1,5 +1,7 @@
 import turtle as t
 import time
+from os import MFD_ALLOW_SEALING
+
 from food import Food
 from scoreboard import ScoreBoard
 
@@ -47,6 +49,18 @@ while game:
         score.score_up()
         score.refresh()
         f.refresh()
+        snake.extend()
+
+    for seg in snake.seg_list[1:]:
+
+        if snake.seg_list[0].distance(seg) < 10:
+            game = False
+            score.game_over()
+
+    if snake.seg_list[0].xcor() >= 280 or snake.seg_list[0].ycor() >= 280:
+        game = False
+        score.game_over()
+
 
     sc.update()
     time.sleep(0.1)
