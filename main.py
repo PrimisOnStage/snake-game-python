@@ -1,5 +1,7 @@
 import turtle as t
 import time
+from os import MFD_ALLOW_SEALING
+
 from food import Food
 from scoreboard import ScoreBoard
 
@@ -27,6 +29,17 @@ sc.onkey(snake.down, "Down")
 sc.onkey(snake.right, "Right")
 sc.onkey(snake.left, "Left")
 
+#make wall
+wall_maker = t.Turtle()
+wall_maker.hideturtle()
+wall_maker.color("white")
+wall_maker.penup()
+wall_maker.goto(280,280)
+wall_maker.setheading(180)
+wall_maker.pendown()
+for _ in range(4):
+    wall_maker.forward(560)
+    wall_maker.left(90)
 
 #playing game
 game = True
@@ -36,6 +49,18 @@ while game:
         score.score_up()
         score.refresh()
         f.refresh()
+        snake.extend()
+
+    for seg in snake.seg_list[1:]:
+
+        if snake.seg_list[0].distance(seg) < 10:
+            game = False
+            score.game_over()
+
+    if snake.seg_list[0].xcor() >= 280 or snake.seg_list[0].ycor() >= 280:
+        game = False
+        score.game_over()
+
 
     sc.update()
     time.sleep(0.1)
