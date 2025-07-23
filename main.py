@@ -1,20 +1,24 @@
 import turtle as t
 import time
 from food import Food
+from scoreboard import ScoreBoard
 
 
 #setting up snake
 import snake as s
 snake = s.Snake()
 
-#food
-f = Food()
 
 #Screen Setup
 sc = t.Screen()
 sc.setup(600,600)
 sc.bgcolor("black")
 sc.tracer(0)
+
+#food
+f = Food()
+score = ScoreBoard()
+
 
 #setup screen listening
 sc.listen()
@@ -24,15 +28,13 @@ sc.onkey(snake.right, "Right")
 sc.onkey(snake.left, "Left")
 
 
-
 #playing game
 game = True
-score = 0
 while game:
     if snake.seg_list[0].distance(f) < 15:
         print("nom, nom, nom")
-
-        score+=1
+        score.score_up()
+        score.refresh()
         f.refresh()
 
     sc.update()
