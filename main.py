@@ -27,6 +27,17 @@ sc.onkey(snake.down, "Down")
 sc.onkey(snake.right, "Right")
 sc.onkey(snake.left, "Left")
 
+#make wall
+wall_maker = t.Turtle()
+wall_maker.hideturtle()
+wall_maker.color("white")
+wall_maker.penup()
+wall_maker.goto(280,280)
+wall_maker.setheading(180)
+wall_maker.pendown()
+for _ in range(4):
+    wall_maker.forward(560)
+    wall_maker.left(90)
 
 #playing game
 game = True
