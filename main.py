@@ -57,7 +57,7 @@ while game:
             game = False
             score.game_over()
 
-    if snake.seg_list[0].xcor() >= 280 or snake.seg_list[0].ycor() >= 280:
+    if snake.seg_list[0].xcor() >= 280 or snake.seg_list[0].ycor() >= 280 or snake.seg_list[0].xcor() <= -280 or snake.seg_list[0].ycor() <= -280:
         game = False
         score.game_over()
 
